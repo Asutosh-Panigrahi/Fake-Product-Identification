@@ -543,8 +543,12 @@ const Invoice = (props) => {
 const App = (props) => {
   const [distributors, setDistributors] = useState([]);
   const getDistributors = async () => {
-    let dis = await props.contract.getAlldistributors();
-    setDistributors(dis);
+    try{
+      let dis = await props.contract.getAlldistributors();
+      setDistributors(dis);
+    } catch (e) {
+      console.log(e);
+    }
   };
   useEffect(() => {
     getDistributors();

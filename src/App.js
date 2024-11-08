@@ -442,9 +442,9 @@ const App = () => {
       const contract = new ethers.Contract(
         CONTRACT_ADDRESS,
         ABI,
-        signer
+        await signer
       );
-      console.log("contract", contract);
+      console.log("contract ", contract.target);
       setContract(contract);
     } else {
       console.log("No authorized account found");
@@ -474,8 +474,9 @@ const App = () => {
       const contract = new ethers.Contract(
         CONTRACT_ADDRESS,
         AssetTracker.abi,
-        signer
+        await signer
       );
+      console.log('contract ', contract.target);
       setContract(contract);
     } catch (error) {
       console.log(error);
